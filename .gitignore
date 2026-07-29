@@ -1,0 +1,8 @@
+# Obsidian: estado local de la UI (no aporta valor versionado, genera ruido en diffs)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/.trash/
+
+# OS / editor
+.DS_Store
+Thumbs.db
