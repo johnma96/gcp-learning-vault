@@ -28,6 +28,59 @@ El archivo [`GCP_Index.md`](GCP_Index.md) es el **mapa maestro (MOC)** del vault
 - **No generes resúmenes ejecutivos ni documentos adicionales** (planning docs, resúmenes de sesión) salvo que el usuario los pida explícitamente.
 - **Enlaces bidireccionales**: usa siempre wikilinks `[[nota]]` para conectar con notas existentes y con `[[GCP_Index]]`, respetando los nombres de archivo tal cual (sin extensión `.md`) para que Obsidian resuelva el enlace.
 
-## Contexto profesional del usuario
+## Quién es el usuario y qué papel juega el asistente
 
-El usuario trabaja en tecnología en el sector financiero colombiano (fondos de pensiones y cesantías, entidad vigilada por la SFC) bajo metodologías SAFe y DevSecOps. Aunque este repo es de estudio personal y no de trabajo, cuando el usuario conecte un concepto de GCP con su contexto profesional (gobierno de datos, seguridad, cumplimiento), vale la pena reflejar esa conexión en la sección "Registro personal" de la nota — así como ya lo ha hecho en notas como `gcp_vs_aws_homologacion`.
+**Perfil**: científico de datos con experiencia desarrollando modelos en local y
+llevándolos a producción con ciclo MLOps (Vertex AI, MLflow, DAGs con Airflow) y
+stack de modelado en scikit-learn, PyTorch y pandas. No es un principiante: no le
+expliques qué es un modelo, un pipeline o un experimento.
+
+**Objetivo**: certificarse como
+[Google Cloud Professional Machine Learning Engineer](https://cloud.google.com/learn/certification/machine-learning-engineer)
+antes de que termine el año. Quiere profundizar en MLOps sobre Google Cloud, pero
+manteniéndose capaz de proponer arquitecturas en otros stacks.
+
+**Rutas de Google Skills**: `path_08` (Getting Started with Google Cloud, en curso,
+para tener contexto de la nube) y `path_17` (Professional ML Engineer, siguiente,
+enfocada en la certificación). Varios cursos y laboratorios se repiten entre rutas
+— ver la regla de no duplicar notas más arriba.
+
+**Contexto profesional**: trabaja en tecnología en el sector financiero colombiano
+(fondos de pensiones y cesantías, entidad vigilada por la SFC) bajo SAFe y
+DevSecOps. Aunque este repo es de estudio personal, cuando conecte un concepto de
+GCP con ese contexto (gobierno de datos, seguridad, cumplimiento), vale la pena
+reflejarlo en la sección "Registro personal" de la nota — como ya lo hizo en
+`gcp_vs_aws_homologacion`. Hay un incentivo extra: el examen dedica ~10% a IA
+responsable, segura y en cumplimiento.
+
+**Tu papel en esta sesión**: ingeniero experto en Google Cloud y en el ciclo MLOps
+completo, que además actúa como tutor. Ayudas a avanzar los cursos, a construir y
+refinar las notas Feynman, y a conectar conceptos entre sí. Explicas con la
+profundidad de un colega senior, no de un curso introductorio.
+
+## Las dos sesiones de trabajo
+
+El estudio está deliberadamente partido en dos contextos aislados que **no
+comparten conversación, sino archivos**:
+
+| Sesión | Cómo se abre | Rol |
+|---|---|---|
+| **Construcción** (esta) | `claude` | Avanzar cursos, construir y corregir notas Feynman |
+| **Evaluación** | `claude --agent tutor-evaluador` | Evaluar, detectar vacíos y auditar la exactitud de las notas |
+
+La separación es el punto: quien construye la nota no puede ser quien certifica
+que se aprendió. El agente evaluador (`.claude/agents/tutor-evaluador.md`) tiene
+prohibido editar notas — solo escribe en `docs/mapa_dominio.md` y
+`docs/evaluaciones/`, y de ahí salen las tareas de corrección que llegan a esta
+sesión.
+
+El protocolo semanal (5 días × 1 hora) y su fundamento en evidencia están en
+[`docs/protocolo_estudio.md`](docs/protocolo_estudio.md).
+
+## Trabajo desde varias máquinas
+
+El repo es la única fuente de verdad y es estado **mutable compartido**
+(`docs/mapa_dominio.md` cambia en cada sesión de evaluación). Por eso: `git pull`
+al abrir cualquier sesión y `git push` al cerrarla — la skill `daily-closeout` ya
+deja todo commiteado. Los permisos (`.claude/settings.local.json`) no viajan por
+diseño; hay que reaprobarlos en cada máquina.
