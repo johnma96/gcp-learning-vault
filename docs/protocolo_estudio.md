@@ -77,7 +77,8 @@ Archivos de estado:
 invertido:
 
 > ### Bloque 0 — Calentamiento de recuperación · 10 min (diario, innegociable)
-> - 5–7 min de Anki (máximo ~30–40 tarjetas; si se acumulan más, ver §5).
+> - 5–7 min de Anki (la cola del día completa; se dimensiona con el límite de
+>   tarjetas nuevas, no con el de repasos — ver §5).
 > - 3–5 min: una pregunta de **recuperación libre** del tutor sobre algo visto
 >   hace 2–7 días, de un módulo distinto al de hoy (intercalado).
 >
@@ -229,9 +230,22 @@ programación:
 - **FSRS activado** (Anki 23.10+), retención deseada **90 %**. FSRS requiere
   entre 20 % y 30 % menos repasos que el algoritmo clásico SM-2 para la misma
   retención.
-- **Tope de ~30–40 tarjetas diarias.** Si la cola crece más, no es que falte
-  disciplina: es que se están creando tarjetas de más. Sube el modificador de
-  intervalo y borra tarjetas.
+- **No bajes el límite de repasos diarios: baja el de tarjetas nuevas.**
+  "Maximum reviews/day" es un tope de seguridad, no un objetivo. Ponerlo bajo
+  no reduce el trabajo — lo **aplaza**, y acumula una cola de tarjetas
+  vencidas. Con FSRS eso es peor que inútil: el algoritmo programa cada
+  tarjeta para el día en que estarías por olvidarla, así que un tope que la
+  empuja más allá de esa fecha degrada sus predicciones. Déjalo en 200 (el
+  valor por defecto) o en el mínimo que Anki acepte.
+- **El volumen de repaso se controla con las tarjetas nuevas.** Los repasos
+  son una *consecuencia*: el manual de Anki estima que 20 tarjetas nuevas al
+  día terminan produciendo unos 200 repasos diarios — una proporción cercana a
+  **10×**. Para un bloque diario de 10 minutos (~40-60 repasos), el número
+  correcto es **5 tarjetas nuevas al día**. Con 153 tarjetas en el mazo, eso
+  las introduce todas en unas cinco semanas.
+- **Si la cola sigue creciendo con 5 nuevas al día**, el problema no es
+  disciplina: es que se están creando tarjetas de más. Borra las que no tengan
+  un caso de uso real.
 - Si una tarjeta falla tres veces seguidas y no logras identificar un caso de
   uso real para ese dato, **bórrala**. No todo merece memorizarse.
 - **Nunca ankifiques algo que no entendiste.** Anki consolida comprensión
