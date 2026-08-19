@@ -54,9 +54,55 @@ No todas las secciones son obligatorias en todas las notas (una nota comparativa
 4. **Contenido clave / conceptos base** — el desarrollo real del tema, en prosa propia, no copiado de la fuente. Usa tablas, listas y sub-secciones `###` libremente. Aquí es donde va, si aplica: diagramas Mermaid (`flowchart`), tablas comparativas, pasos `gcloud`/código, mapas de decisión.
 5. **Relación con otras piezas / enlaces cruzados** (si aplica) — cómo se conecta esta nota con conceptos ya vistos, con wikilinks `[[nota]]` inline además de los del frontmatter.
 6. **Preguntas Feynman (auto-chequeo)** — 4-6 preguntas que uno debería poder responder de memoria sin releer la nota. Son para forzar recuperación activa, no para repetir el resumen.
-7. **Tarjetas Anki** — 4-6 pares `Q:`/`A:` (o `**P:**`/`**R:**`) cortos, atómicos, aptos para repaso espaciado.
+7. **Tarjetas Anki** — ver la sección 3.1; el encabezado y el formato son estrictos porque los lee un exportador automático.
 8. **Glosario** (opcional, útil si la nota introduce 3+ términos nuevos).
 9. **Registro personal** — sección de cierre, siempre presente, en primera persona: lecciones aprendidas, dudas abiertas, siguientes pasos, y —cuando aplique honestamente— la conexión con el contexto profesional del autor (sector financiero colombiano, SAFe/DevSecOps). No la fuerces si no hay conexión real.
+
+## 3.1) Tarjetas Anki (formato estricto)
+
+Las tarjetas se extraen automáticamente con `scripts/export_anki.py`, así que
+el encabezado y el formato no son libres.
+
+**Encabezado exacto** (el número de sección varía según la nota):
+
+```markdown
+## 8) Tarjetas Anki
+```
+
+No uses variantes como "Tarjetas de memoria (Anki)" ni "(estilo Anki)": el
+vault ya tuvo tres encabezados divergentes y dos notas quedaron fuera del mazo
+durante semanas sin que nadie lo notara.
+
+**Formato de cada tarjeta** — pares `**Q:**` / `**A:**`, respuesta en línea
+aparte, una línea en blanco entre tarjetas:
+
+```markdown
+**Q:** Pregunta corta y atómica
+**A:** Respuesta corta y atómica
+```
+
+**Mezcla de tipos (4-8 tarjetas por nota).** No hagas solo definiciones: el
+primer diagnóstico del vault (19/08/2026) falló en decisiones entre servicios,
+no en definiciones, y el mazo era casi todo definición. Cada nota debería
+mezclar:
+
+- **Concepto** — qué es, para qué sirve, cuál es el término correcto. Cubre los
+  fallos de terminología (no recuperar la palabra "grounding", por ejemplo).
+- **Decisión** — con la señal del escenario dentro de la pregunta:
+  *"¿Series de tiempo, IoT, alto throughput, acceso por row key?" → Bigtable*.
+  Cubre los fallos de elección entre servicios parecidos, que es lo que evalúa
+  el examen.
+- **Discriminación** — qué separa A de B: *"¿Qué distingue a Cloud SQL de
+  Spanner?" → escalado vertical y regional vs. horizontal y global*.
+
+**Qué NO ankificar:** procedimientos ordenados de varios pasos (la cadena
+`forwarding rule → target proxy → URL map → backend service → backends`, los
+pasos para configurar una VPC). Fallan de forma predecible en repaso espaciado
+— van como diagrama o checklist dentro de la nota. En tarjeta solo las
+relaciones atómicas: *"¿Qué componente del ALB enruta por path?" → URL map*.
+
+Tampoco escribas una tarjeta sobre algo que la nota no explica: Anki consolida
+comprensión existente, no la produce.
 
 Mermaid: usa `flowchart TB` o `flowchart LR` según convenga; evita saltos de línea dentro de una misma etiqueta de nodo (rompen el render en Obsidian).
 

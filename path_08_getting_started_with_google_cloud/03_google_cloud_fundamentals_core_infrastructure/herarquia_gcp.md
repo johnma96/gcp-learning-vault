@@ -84,7 +84,7 @@ flowchart TB
 4. ¿Para qué sirve **Resource Manager** y por qué es útil en automatización?
 5. ¿Qué necesitas para usar **Carpetas**?
 
-## 7) Tarjetas de memoria (Anki)
+## 7) Tarjetas Anki
 Q: Orden de la jerarquía de GCP.  
 A: **Recursos → Proyectos → Carpetas → Organización**.
 

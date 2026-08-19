@@ -144,7 +144,7 @@ flowchart TB
 4. ¿Qué herramienta usarías para mover 500 TB desde otro proveedor?
 
 ---
-# 12) Tarjetas Anki
+## 12) Tarjetas Anki
 **Q:** ¿Cuántas clases ofrece Cloud Storage?  
 **A:** 4: Standard, Nearline, Coldline, Archive.
 

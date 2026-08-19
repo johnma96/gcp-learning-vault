@@ -153,7 +153,7 @@ Este diseño es parte de la **infraestructura de Google**. Para el usuario, se r
 - ¿Cuál es la diferencia entre **TLS en GFE** y **cifrado en reposo**?
 - ¿Qué actividades conforman la **seguridad operativa** (menciona al menos 3)?
 
-## 14) Tarjetas de memoria (estilo Anki)
+## 14) Tarjetas Anki
 Q: ¿En una frase, qué es el **diseño en capas** de seguridad de Google Cloud?
 A: Un enfoque de defensa en profundidad desde el hardware y centros de datos hasta identidad, cifrado, frontales de Internet (GFE) y operaciones.
 
