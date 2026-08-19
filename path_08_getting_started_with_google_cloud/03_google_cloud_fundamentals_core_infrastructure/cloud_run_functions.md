@@ -116,6 +116,9 @@ Con Cloud Run Functions: el cómputo existe **solo mientras se ejecuta la funci�
 
 ---
 
+**Q:** ¿Ejecutar código cuando ocurre un evento (un objeto que llega a un bucket), sin endpoint HTTP público?
+**A:** **Cloud Run functions** — es *event-driven*: lo dispara el evento, no una petición.
+
 ### Registro personal
 - Cloud Run Functions es ideal para la lógica "entre servicios": reaccionar a un evento y desencadenar una acción.
 - En pipelines de datos, puede usarse como disparador ligero antes de invocar procesos más pesados en Dataflow o BigQuery.

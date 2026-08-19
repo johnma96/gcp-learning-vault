@@ -112,6 +112,9 @@ A: Básicos, predefinidos, personalizados.
 Q: Restricción de roles personalizados.
 A: Solo nivel **proyecto** u **organización**.
 
+Q: ¿Cómo impides un permiso aunque el principal tenga el rol que lo concede?
+A: Con una **deny policy**: se evalúa **antes** que las allow y se hereda hacia abajo. Un rol no la sobrescribe.
+
 ## 8) Glosario
 - **Principal**: identidad que recibe permisos.
 - **Rol**: conjunto de permisos.

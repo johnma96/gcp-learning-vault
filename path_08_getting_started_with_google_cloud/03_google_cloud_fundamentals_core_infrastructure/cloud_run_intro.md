@@ -152,6 +152,9 @@ Cloud Run puede ejecutar **cualquier binario compilado para Linux 64-bit**, lo q
 
 ---
 
+**Q:** ¿Desplegar una imagen de contenedor que responde peticiones HTTP y escala a cero?
+**A:** **Cloud Run** — es *request-driven*: existe un endpoint HTTP que recibe la solicitud.
+
 ### Registro personal
 - Cloud Run es la opción más simple para exponer un modelo ML o una API rápidamente en GCP sin gestionar infraestructura.
 - El flujo source-based es ideal para prototipos; el container-based para producción con control total.

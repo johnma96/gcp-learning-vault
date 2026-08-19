@@ -130,6 +130,36 @@ Su objetivo es **analítica masiva** e **interrogación interactiva de Big Data*
 - 📊 **Bigtable** → [[bigtable]]
 
 ---
+## 8) Tarjetas Anki
+
+**Q:** ¿Series de tiempo, IoT, sensores, alto throughput y acceso por row key?
+**A:** **Bigtable** (wide-column NoSQL, petabytes, sin SQL ni joins).
+
+**Q:** ¿SQL completo + escala global + transacciones consistentes globalmente?
+**A:** **Spanner** (relacional distribuido, escalado horizontal, >99.999% en multirregión).
+
+**Q:** ¿App móvil con sincronización offline y actualizaciones en tiempo real?
+**A:** **Firestore** (NoSQL de documentos, caché local, indexación automática).
+
+**Q:** ¿SQL completo, pero regional y con escalado vertical suficiente?
+**A:** **Cloud SQL** (MySQL/Postgres/SQL Server gestionado, techo de 64 TB).
+
+**Q:** ¿Objetos grandes e inmutables: imágenes, videos, backups, artefactos?
+**A:** **Cloud Storage** (object storage, petabytes, hasta 5 TB por objeto).
+
+**Q:** ¿Qué distingue a Cloud SQL de Spanner?
+**A:** Cloud SQL escala **verticalmente** y es **regional** (techo 64 TB); Spanner escala **horizontalmente** con consistencia fuerte **global**. La palabra *global* en el escenario descarta Cloud SQL.
+
+**Q:** ¿Por qué "es rápido y escala" no sirve como criterio para elegir base de datos?
+**A:** Porque describe a casi todas. Se elige **descartando** con el requisito duro del escenario: SQL o no, global o regional, tiempo real/offline, tamaño y patrón de acceso.
+
+**Q:** ¿Por qué BigQuery no aparece en esta comparativa?
+**A:** No es almacenamiento puro: es **analítica masiva** (data warehouse), no transaccional. No tiene SDK móvil, listeners de cambios ni latencia de milisegundos.
+
+**Q:** Límite por unidad de Firestore y de Bigtable.
+**A:** Firestore: **1 MB por documento**. Bigtable: **10 MB por celda**, **100 MB por fila**.
+
+---
 ### Registro personal
 - Esta tabla es mi “mapa mental” para elegir storage según carga, latencia, tamaño y modelo de datos.
 - Bigtable = IoT/series tiempo; Spanner = SQL global; Firestore = mobile/web; SQL = apps clásicas; Cloud Storage = binarios.

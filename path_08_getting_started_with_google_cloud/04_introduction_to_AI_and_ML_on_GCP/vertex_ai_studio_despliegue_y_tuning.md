@@ -106,6 +106,9 @@ Model Registry]
 **Q:** Nombra las dos vías de bajo código para desplegar un prompt más allá de la UI.
 **A:** SDK en Python y API con cURL (código generado con "Build with Code"), con Cloud Run/Cloud Shell para producción.
 
+**Q:** ¿Conocimiento factual que cambia varias veces al año y hay que citar la fuente?
+**A:** **Grounding implementado con RAG**, no tuning. El tuning cambia lo que el modelo sabe internamente; no inyecta hechos cambiantes ni da trazabilidad a la fuente citada.
+
 ## 8) Glosario
 - **Grounding**: práctica de verificar las respuestas de un modelo contra fuentes de datos externas y confiables.
 - **RAG (Retrieval Augmented Generation)**: método que implementa grounding recuperando información relevante antes de generar la respuesta.

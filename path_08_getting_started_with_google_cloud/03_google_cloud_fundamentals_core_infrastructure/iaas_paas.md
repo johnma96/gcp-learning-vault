@@ -27,10 +27,27 @@ Pago: por uso.
 
 ## Serverless
 Servicios completamente gestionados.
-- **Cloud Functions**
+- **Cloud Run functions** (antes Cloud Functions)
 - **Cloud Run**
 - **App Engine (modo estándar)**
 
 ## SaaS (Software as a Service)
 Servicios listos para usar.
 Ej: Gmail, Drive, Docs.
+
+## Tarjetas Anki
+
+**Q:** ¿Qué modelo entrega cómputo, red y almacenamiento de bajo nivel, y cómo se paga?
+**A:** **IaaS** (ej. Compute Engine). Se paga por **recursos reservados**, corran o no.
+
+**Q:** ¿Qué modelo permite correr aplicaciones sin administrar servidores, y cómo se paga?
+**A:** **PaaS** (ej. App Engine). Se paga **por uso**.
+
+**Q:** ¿Necesito controlar el sistema operativo y el tamaño de la máquina?
+**A:** **IaaS** (Compute Engine). Si no necesitas ese control, sube de nivel: PaaS o serverless.
+
+**Q:** ¿Qué diferencia el modelo de cobro de IaaS frente al de PaaS?
+**A:** IaaS cobra por **capacidad reservada**; PaaS cobra por **consumo real**.
+
+**Q:** Ejemplos de serverless en GCP.
+**A:** **Cloud Run**, **Cloud Run functions** y **App Engine** en modo estándar.

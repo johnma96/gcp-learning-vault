@@ -25,3 +25,17 @@ La separación por regiones y zonas contribuye a la **alta disponibilidad** y fo
 - Location: América del Norte
 - Región: `us-central1`
 - Zonas: `us-central1-a`, `us-central1-b`, `us-central1-c`
+
+## Tarjetas Anki
+
+**Q:** ¿Cuáles son los tres niveles de la estructura geográfica de GCP?
+**A:** **Locations → Regiones → Zonas**.
+
+**Q:** ¿La estructura geográfica es lo mismo que la jerarquía de recursos?
+**A:** No, son ejes distintos. **Geográfica**: Locations → Regiones → Zonas, define *dónde corre* el recurso. **Jerarquía de recursos**: Recursos → Proyectos → Carpetas → Organización, define *quién administra* y cómo se heredan las políticas.
+
+**Q:** ¿Qué es una zona y para qué sirve?
+**A:** Un entorno **aislado** dentro de una región (`us-central1-a`). Distribuir entre zonas da **alta disponibilidad** frente a fallos localizados.
+
+**Q:** Formato del nombre de una región y de una zona.
+**A:** Región `us-central1`; zona `us-central1-a` (la región más un sufijo de letra).
