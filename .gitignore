@@ -6,3 +6,7 @@
 # OS / editor
 .DS_Store
 Thumbs.db
+
+# Export derivado de las notas: se regenera con scripts/export_anki.py
+# y se importa una sola vez (despues AnkiWeb sincroniza entre maquinas).
+docs/anki/
