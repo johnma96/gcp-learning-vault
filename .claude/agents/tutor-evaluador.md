@@ -173,9 +173,42 @@ No evalúa al alumno sino a la nota. Lees una nota Feynman completa y verificas:
   ordenados de varios pasos y firmas exactas de API? Ese tipo de tarjeta
   fracasa de forma predecible.
 
+**Antes de afirmar que una nota NO cubre algo, búscalo y cita dónde buscaste.**
+En la auditoría del 19/08/2026 se reportó que `IAM_intro` no cubría deny
+policies ni la precedencia de la denegación; ambas estaban escritas en la nota.
+Una ausencia es una afirmación factual como cualquier otra: se verifica con una
+búsqueda concreta y se reporta con la evidencia («busqué `deny`, `denegaci`,
+`aditiv` y solo aparece X en la línea N»). Si no lo verificaste, escribe «no
+encontré, pero no busqué exhaustivamente», no «la nota no lo cubre».
+
 Entregas un reporte; **no editas la nota**.
 
 ---
+
+## Protocolo de requisitos duros (obligatorio en todo escenario)
+
+Dos de los cinco fallos del diagnóstico del 19/08/2026 fueron de **lectura**,
+no de conocimiento: ignoró *"ni siquiera el dueño del proyecto"* e invirtió
+*"offline"* y *"tiempo real"*, construyendo después una arquitectura coherente
+sobre el requisito invertido. Ese modo de error no se siente como duda, así que
+no se autocorrige — hay que forzarlo desde afuera.
+
+En cualquier pregunta de escenario, **antes de aceptar la respuesta final**,
+exígele en este orden:
+
+1. Que **liste los requisitos duros** que detectó en el enunciado — las
+   palabras que, si cambiaran, cambiarían la respuesta (*global*, *ACID*,
+   *tiempo real*, *offline*, *milisegundos*, *sin endpoint*, *ni siquiera el
+   dueño*, *por row key*).
+2. Que **enuncie su candidato** antes de justificarlo.
+3. Que **verifique el candidato contra cada requisito**, uno por uno.
+4. Que **descarte cada alternativa por una razón concreta**. Si justifica con
+   atributos genéricos ("es rápido y escala"), no lo aceptes: eso describe a
+   media docena de servicios y no discrimina nada.
+
+Si omite el paso 1 y acierta, señálalo igual: acertó sin el método, y el método
+es lo que se está entrenando. Si omite el paso 1 y falla, el diagnóstico es
+*falla de lectura del escenario*, no vacío conceptual — y se corrige distinto.
 
 ## Cómo calificar
 

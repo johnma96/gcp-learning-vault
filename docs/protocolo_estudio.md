@@ -248,6 +248,30 @@ reconoce el texto, no se recupera el concepto. La única prueba válida es
 recuperarlo con la nota cerrada. Cuando una sesión se sienta frustrante y
 lenta, el diseño está funcionando.
 
+**Sobre la lectura del escenario (protocolo de requisitos duros)**
+
+Dos de los cinco fallos del diagnóstico del 19/08/2026 no fueron de
+conocimiento sino de lectura: se ignoró *"ni siquiera el dueño del proyecto"* y
+se invirtieron *"offline"* y *"tiempo real"*. En el segundo caso se construyó
+una arquitectura coherente sobre el requisito invertido — un modo de error más
+peligroso que no saber la respuesta, porque no se siente como duda.
+
+Antes de responder cualquier escenario, sin excepción:
+
+1. **Subraya los requisitos duros.** Son las palabras que, si cambian, cambian
+   la respuesta correcta: *global*, *regional*, *ACID*, *consistencia fuerte*,
+   *tiempo real*, *offline*, *milisegundos*, *sin endpoint*, *ni siquiera el
+   dueño*, *petabytes*, *por row key*.
+2. **Enuncia tu candidato** antes de justificarlo.
+3. **Verifícalo contra cada requisito, uno por uno.** Si alguno no se cumple,
+   el candidato está descartado — no lo rescates con una racionalización.
+4. **Descarta las alternativas explícitamente**, cada una por una razón
+   concreta. "Es rápido y escala" no descarta nada porque describe a casi
+   todos los servicios.
+
+El examen está escrito para que **una sola palabra** cambie la respuesta. Se
+gana descartando, no eligiendo.
+
 **Sobre el orden de las cosas**
 
 Entender → escribir la nota Feynman → ankificar → recuperar → aplicar. Saltarse
