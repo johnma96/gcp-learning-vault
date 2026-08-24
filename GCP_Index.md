@@ -1,7 +1,7 @@
 ---
 title: 'GCP_Index (Mapa maestro)'
 date: 2026-07-27
-status: v0.7
+status: v0.8
 tags: [GCP, Index, MOC, Obsidian]
 ---
 # GCP Index (Mapa maestro)
@@ -64,6 +64,8 @@ tags: [GCP, Index, MOC, Obsidian]
 - Vertex AI Studio: de la idea a la app (anatomía de un prompt, caso Cymbal Insurance) → [[vertex_ai_studio_idea_to_app]]
 - Vertex AI Studio: parámetros del modelo y evaluación (temperature, Top K, Top P) → [[vertex_ai_studio_parametros_modelo]]
 - Vertex AI Studio: despliegue, grounding/RAG y tuning de modelos (prompt design, adapter tuning, full fine-tuning) → [[vertex_ai_studio_despliegue_y_tuning]]
+- Opciones de desarrollo de ML (APIs preentrenadas · BigQuery ML · AutoML · entrenamiento personalizado) → [[opciones_desarrollo_ml_gcp]]
+- Cloud Natural Language API (entidades, sentimiento, sintaxis, categorías) → [[natural_language_api]]
 
 ## 🧰 Interacción y herramientas (transversal)
 - Formas de interactuar con GCP → [[interactuando_con_gcp]]
@@ -127,6 +129,8 @@ flowchart TB
     IDEA[vertex_ai_studio_idea_to_app]
     PARAMS[vertex_ai_studio_parametros_modelo]
     TUNE[vertex_ai_studio_despliegue_y_tuning]
+    OPTS[opciones_desarrollo_ml_gcp]
+    NLAPI[natural_language_api]
   end
 
   subgraph OPS[Interacción / Tools]
@@ -176,6 +180,8 @@ flowchart TB
   AWS --> PE
 
   PE --> GAI --> IDEA --> PARAMS --> TUNE
+  GAI --> OPTS --> NLAPI
+  COMP -.criterio de descarte.-> OPTS
 ```
 
 > Si el diagrama no renderiza, verifica que **no** haya saltos de línea dentro de etiquetas y que Mermaid esté habilitado en Obsidian.
@@ -192,6 +198,7 @@ flowchart TB
 ---
 
 ## 📥 Changelog
+- **v0.8 (2026-08-24)**: Se agregan `opciones_desarrollo_ml_gcp` (tabla comparativa y mapa de decisión entre APIs preentrenadas, BigQuery ML, AutoML y entrenamiento personalizado, con Vertex AI como plataforma unificada) y `natural_language_api` (entidades, sentimiento, sintaxis y categorías), cubriendo la rama **predictiva** del Curso 04 frente a la generativa ya documentada.
 - **v0.7 (2026-07-29)**: Se agrega `vertex_ai_studio_despliegue_y_tuning` (despliegue vía SDK/API, grounding/RAG y tuning de modelos: prompt design, parameter-efficient tuning, full fine-tuning) como cierre del ciclo prompt-to-production del Curso 04, enlazada como continuación de `vertex_ai_studio_parametros_modelo`.
 - **v0.6 (2026-07-27)**: Se agrega la sección **Curso 04 · Introduction to AI and ML on Google Cloud** (en progreso) con las notas `genai_arquitectura_google_cloud`, `vertex_ai_studio_idea_to_app` y `vertex_ai_studio_parametros_modelo`, enlazadas como continuación de `prompt_engineering_intro`. Se crean `CLAUDE.md`, `README.md` y la skill `gcp-feynman-note` que estandariza la creación de notas y la actualización de este índice.
 - **v0.5 (2026-03-03)**: Curso completado. Se agrega **M7 · GenAI y Prompt Engineering** con `prompt_engineering_intro`. Se añade la sección **Notas complementarias** con `gcp_vs_aws_homologacion`. Se incorpora la tabla resumen de los 7 módulos del curso y se reorganiza el objetivo del índice.
