@@ -155,12 +155,22 @@ def main():
         tags.add(normalizar_tag("nota::" + md.stem))
         etiquetas = " ".join(sorted(tags))
 
+        # El titulo de la nota va en el FRENTE, no en el reverso: sin el, una
+        # pregunta valida como "¿Que motores soporta?" es irresoluble al
+        # repasar, porque el tema solo aparecia despues de voltear la tarjeta.
+        # Los titulos largos ("Nota: subtitulo, con enumeracion") se comen la
+        # tarjeta: basta la parte anterior a los dos puntos.
+        etiqueta = (titulo or md.stem).strip()
+        if len(etiqueta) > 55:
+            etiqueta = re.split(r"\s*[:—]\s*", etiqueta, maxsplit=1)[0].strip()
+        if len(etiqueta) > 55:
+            etiqueta = etiqueta[:54].rstrip() + "…"
+        contexto = (
+            '<div style="color:#888;font-size:0.75em;margin-bottom:0.7em">'
+            f"{etiqueta}</div>"
+        )
         for pregunta, respuesta in tarjetas:
-            origen = (
-                '<br><br><span style="color:#888;font-size:0.8em">'
-                f"{titulo or md.stem}</span>"
-            )
-            filas.append((pregunta, respuesta + origen, etiquetas))
+            filas.append((contexto + pregunta, respuesta, etiquetas))
 
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     with SALIDA.open("w", encoding="utf-8", newline="\n") as f:

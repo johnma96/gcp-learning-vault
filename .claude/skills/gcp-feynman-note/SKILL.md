@@ -81,6 +81,15 @@ aparte, una línea en blanco entre tarjetas:
 **A:** Respuesta corta y atómica
 ```
 
+**La pregunta debe nombrar su sujeto.** El exportador antepone el título de la
+nota al frente de cada tarjeta, así que el tema nunca falta del todo — pero no
+te apoyes en esa muleta: *"¿Qué motores soporta?"* funciona solo porque arriba
+dice "Spanner", mientras que *"¿Qué motores de base de datos soporta Spanner?"*
+se sostiene sola y se puede reordenar, exportar o compartir sin perder sentido.
+La excepción legítima son las tarjetas de decisión, donde el escenario **es** la
+pregunta: *"¿Series de tiempo, IoT, alto throughput, acceso por row key?"* no
+necesita sujeto porque el enunciado ya lo describe entero.
+
 **Mezcla de tipos (4-8 tarjetas por nota).** No hagas solo definiciones: el
 primer diagnóstico del vault (19/08/2026) falló en decisiones entre servicios,
 no en definiciones, y el mazo era casi todo definición. Cada nota debería
