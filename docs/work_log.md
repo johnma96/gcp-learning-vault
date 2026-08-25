@@ -51,3 +51,69 @@ Los bloques A, B y D quedaron cerrados hoy. **El C es lo único pendiente**: con
 Además, fuera del Bloque C: `gcp-network` e `iaas_paas` tienen wikilinks rotos a `gcp_seguridad_disenio_en_capas_feynman` (la nota se llama `gcp_seguridad_disenio_en_capas`) y frontmatter incompleto, por lo que no aportan tags temáticos al mazo.
 
 ---
+
+## 25-08-2026
+
+### Trabajo desarrollado
+- Se cerró el **curso 04**: se convirtieron las cinco transcripciones finales en `flujo_trabajo_ml_y_mlops` (tres etapas del flujo, Feature Store, matriz de confusión con precisión/recuperación, Explainable AI, las tres formas de servir predicciones, MLOps con Vertex AI Pipelines, componentes y fases de adopción).
+- Antes de borrar el PDF de la lista de lectura se **extrajeron sus seis URLs incrustadas** y se incorporaron a la nota como tabla, mapeadas por orden de aparición. Entre ellas, el documento de arquitectura de MLOps de Google (niveles de madurez 0/1/2), que es la fuente canónica de las tres fases de adopción.
+- Se resolvió por qué el badge del curso 04 no aparece en Credly: es un **completion badge**, y solo los **skill badges** (los que exigen aprobar un challenge lab) son elegibles. No es un fallo.
+- `GCP_Index` a **v0.9**, curso 04 marcado como completado. Mazo en **191 tarjetas** desde 37 notas.
+
+### Próximos pasos — Bloque C (26/08/2026)
+
+> **Advertencia de alcance**: lo que sigue son entre 2 y 3 horas de trabajo, no 50 minutos. Está ordenado por valor decreciente por minuto invertido; conviene partirlo en dos días o aceptar que las tandas 3 y 4 se corren.
+> **Choque de agenda**: el miércoles es día de verificación con el tutor según el protocolo. Hacer Bloque C mañana desplaza esa sesión.
+
+**Paso 0 — Recargar el mazo (10 min, va primero porque desbloquea el repaso diario)**
+
+- [ ] Borrar el mazo `GCP` en Anki de escritorio y reimportar `docs/anki/gcp_cards.tsv` (191 tarjetas). Hay que borrar, no actualizar: cambió el frente de todas las tarjetas al mover el título de la nota al anverso.
+- [ ] Confirmar FSRS con retención **0.90**, tarjetas nuevas por día en **5**, y el límite de repasos **alto** (100–200; nunca bajo, ver §5 del protocolo).
+
+**Tanda 1 — Limpieza mecánica (~15 min, todo verificado el 25/08)**
+
+- [ ] Wikilink roto `[[gcp_seguridad_disenio_en_capas_feynman]]` → la nota se llama `gcp_seguridad_disenio_en_capas`. Está en **8 notas**: `002_balanceador_red`, `003_balanceador_apps`, `004_balanceador_interno`, `cloud_identity`, `cloud_load_balancing`, `cuentas_servicio`, `gcp-network`, `iaas_paas`. Se arregla en un solo `sed`.
+- [ ] `cloud_storage_classes.md` línea 2: el título dice `"Cloud Storage en Google Cloud (Completado)"`. Dos problemas — no es su tema (son las *clases* de almacenamiento) y arrastra un marcador de progreso que se cuela como etiqueta de contexto en las tarjetas Anki.
+- [ ] `003_balanceador_apps.md` línea 14: artefacto de pegado `citeturn20search2` con caracteres Unicode invisibles (U+E200). No se ve al leer pero está en el texto.
+- [ ] `iaas_paas` y `conectividad_hibrida_gcp` siguen **fuera de `GCP_Index`** — huérfanas del grafo desde el primer commit.
+
+**Tanda 2 — Los seis huecos de contenido del diagnóstico del 19/08**
+
+- [ ] `IAM_intro`: **aditividad** de las allow policies (un hijo no puede restringir lo que el padre concedió) y formato de permiso IAM v2 (`storage.googleapis.com/buckets.delete`). Ojo: las deny policies y su precedencia **ya están** en la nota — el tutor se equivocó en eso.
+- [ ] **Nota nueva**: retention policy y bucket lock en Cloud Storage (inmutabilidad WORM, irreversibilidad del lock, no se puede borrar el bucket hasta que todos los objetos cumplan la retención). Desambiguar frente a la sección "Inmutabilidad" de `cloud_storage`, que habla de *versionado* — otro concepto.
+- [ ] `herarquia_gcp`: separar "políticas" de IAM de las de **Organization Policy**. La frase sobre excepciones puntuales solo aplica a las segundas.
+- [ ] `cloud_run_intro` / `cloud_run_functions`: dejar explícito el eje **request-driven vs. event-driven** y el parámetro **`min instances = 0`** (hoy la nota no lo nombra).
+- [ ] `gke_intro`: añadir las primitivas que son la señal de decisión — **DaemonSets, NetworkPolicy, service mesh, taints/afinidad**. Hoy no aparecen en ninguna parte de la nota.
+- [ ] `003_balanceador_apps`: nombre oficial **con modificador** (global external / regional external / internal / classic), **dónde termina el TLS** (target HTTPS proxy) y la cadena de componentes **como diagrama, no como tarjeta**.
+
+**Tanda 3 — Nota nueva de Pub/Sub**
+
+- [ ] Nota introductoria de **Pub/Sub**: temas, suscripciones, push vs. pull, entrega *at-least-once*, desacople productor/consumidor.
+- [ ] Incluir **Eventarc** y cómo dispara Cloud Run functions desde eventos de Cloud Storage — es exactamente el mecanismo que falló en la P5-C del diagnóstico.
+- [ ] Justificación: hoy **ninguna nota del vault está dedicada a Pub/Sub** (solo dos lo mencionan de pasada), es uno de los cuatro servicios del skill badge ya obtenido, y ya figuraba como concepto detectado sin nota en `mapa_dominio`.
+
+**Tanda 4 — Las cinco tarjetas de decisión bloqueadas**
+
+Se escriben *después* de las tandas 2 y 3, porque la regla es no ankificar lo que ninguna nota explica:
+
+- [ ] ¿Inmutabilidad WORM de objetos y del bucket? → retention policy + bucket lock (depende de la tanda 2)
+- [ ] ¿Necesito DaemonSets, NetworkPolicy o service mesh? → GKE (depende de la tanda 2)
+- [ ] ¿Qué parámetro permite escalar a cero en Cloud Run? → `min instances = 0` (depende de la tanda 2)
+- [ ] ¿Dónde termina el TLS en un ALB? → target HTTPS proxy (depende de la tanda 2)
+- [ ] Context caching → reutilizar contexto repetido para bajar costo/latencia; no recupera ni actualiza nada. **Sigue sin respaldo**: habría que añadir una sección a `vertex_ai_studio_despliegue_y_tuning` primero.
+
+**Al cerrar el bloque**
+
+- [ ] Regenerar el TSV (`python scripts/export_anki.py`) y verificar que no reporte omisiones.
+- [ ] Actualizar `GCP_Index` a **v0.10** con las notas nuevas y las dos huérfanas.
+- [ ] Commits y push.
+- [ ] Reimportar el mazo en Anki — habrá tarjetas nuevas de las tandas 3 y 4.
+
+### Fuera del alcance del Bloque C (anotado para no perderlo)
+
+- `002_dataflow_templates` del **curso 02 sigue vacío**. Es un vacío frente al dominio de gestión de datos del examen (15 %).
+- **Contradicción sin resolver sobre los tipos de datos de AutoML**: `opciones_desarrollo_ml_gcp` §7 dice tabular e imagen; `flujo_trabajo_ml_y_mlops` §4 dice tabular, imagen, texto y video. El propio curso se contradice. Hay que zanjarlo contra la guía oficial del examen y dejar una sola versión.
+- **10 notas con frontmatter incompleto** (sin `authors`, y algunas con `tags` en formato lista que el exportador no lee, por lo que no aportan tags temáticos al mazo): `00_proyectos_gcp_que_son`, las tres de balanceadores, `cloud_load_balancing`, `cloud_marketplace`, `cloud_storage_classes`, `gcp-network`, `iaas_paas`, `virtual_private_cloud_networking`.
+- Confirmar con el usuario el número y nombre exactos de **`path_17`** tal como aparecen en Google Skills, antes de crear su carpeta.
+
+---
