@@ -1,7 +1,7 @@
 ---
 title: 'GCP_Index (Mapa maestro)'
 date: 2026-07-27
-status: v0.8
+status: v0.9
 tags: [GCP, Index, MOC, Obsidian]
 ---
 # GCP Index (Mapa maestro)
@@ -59,13 +59,14 @@ tags: [GCP, Index, MOC, Obsidian]
 - Fundamentos y buenas prácticas → [[prompt_engineering_intro]]
 
 ## 🧠 Curso 04 · Introduction to AI and ML on Google Cloud
-> Curso independiente de la ruta *Getting started with Google Cloud*, en progreso. Continúa y aplica los conceptos de [[prompt_engineering_intro]] dentro de la arquitectura de GenAI de Google.
+> Curso independiente de la ruta *Getting started with Google Cloud*, **completado el 25/08/2026**. Continúa y aplica los conceptos de [[prompt_engineering_intro]] dentro de la arquitectura de GenAI de Google.
 - Arquitectura de GenAI en Google Cloud (3 capas: foundation models, dev, apps) → [[genai_arquitectura_google_cloud]]
 - Vertex AI Studio: de la idea a la app (anatomía de un prompt, caso Cymbal Insurance) → [[vertex_ai_studio_idea_to_app]]
 - Vertex AI Studio: parámetros del modelo y evaluación (temperature, Top K, Top P) → [[vertex_ai_studio_parametros_modelo]]
 - Vertex AI Studio: despliegue, grounding/RAG y tuning de modelos (prompt design, adapter tuning, full fine-tuning) → [[vertex_ai_studio_despliegue_y_tuning]]
 - Opciones de desarrollo de ML (APIs preentrenadas · BigQuery ML · AutoML · entrenamiento personalizado) → [[opciones_desarrollo_ml_gcp]]
 - Cloud Natural Language API (entidades, sentimiento, sintaxis, categorías) → [[natural_language_api]]
+- Flujo de trabajo de ML y MLOps (3 etapas, métricas, Vertex AI Pipelines) → [[flujo_trabajo_ml_y_mlops]]
 
 ## 🧰 Interacción y herramientas (transversal)
 - Formas de interactuar con GCP → [[interactuando_con_gcp]]
@@ -131,6 +132,7 @@ flowchart TB
     TUNE[vertex_ai_studio_despliegue_y_tuning]
     OPTS[opciones_desarrollo_ml_gcp]
     NLAPI[natural_language_api]
+    FLOW[flujo_trabajo_ml_y_mlops]
   end
 
   subgraph OPS[Interacción / Tools]
@@ -181,6 +183,8 @@ flowchart TB
 
   PE --> GAI --> IDEA --> PARAMS --> TUNE
   GAI --> OPTS --> NLAPI
+  OPTS --> FLOW
+  TUNE -.mismo patron registry-endpoint.-> FLOW
   COMP -.criterio de descarte.-> OPTS
 ```
 
@@ -198,6 +202,7 @@ flowchart TB
 ---
 
 ## 📥 Changelog
+- **v0.9 (2026-08-25)**: Se agrega `flujo_trabajo_ml_y_mlops` (las tres etapas del flujo de ML, Feature Store, matriz de confusión con precisión/recuperación, Explainable AI, las tres formas de servir predicciones, y MLOps con Vertex AI Pipelines, componentes y fases de adopción). **Curso 04 completado.**
 - **v0.8 (2026-08-24)**: Se agregan `opciones_desarrollo_ml_gcp` (tabla comparativa y mapa de decisión entre APIs preentrenadas, BigQuery ML, AutoML y entrenamiento personalizado, con Vertex AI como plataforma unificada) y `natural_language_api` (entidades, sentimiento, sintaxis y categorías), cubriendo la rama **predictiva** del Curso 04 frente a la generativa ya documentada.
 - **v0.7 (2026-07-29)**: Se agrega `vertex_ai_studio_despliegue_y_tuning` (despliegue vía SDK/API, grounding/RAG y tuning de modelos: prompt design, parameter-efficient tuning, full fine-tuning) como cierre del ciclo prompt-to-production del Curso 04, enlazada como continuación de `vertex_ai_studio_parametros_modelo`.
 - **v0.6 (2026-07-27)**: Se agrega la sección **Curso 04 · Introduction to AI and ML on Google Cloud** (en progreso) con las notas `genai_arquitectura_google_cloud`, `vertex_ai_studio_idea_to_app` y `vertex_ai_studio_parametros_modelo`, enlazadas como continuación de `prompt_engineering_intro`. Se crean `CLAUDE.md`, `README.md` y la skill `gcp-feynman-note` que estandariza la creación de notas y la actualización de este índice.
